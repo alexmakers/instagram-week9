@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(params[:photo].permit(:title))
+    Photo.create(params[:photo].permit(:title, :image))
 
     flash[:notice] = 'Photo added'
     redirect_to photos_path
