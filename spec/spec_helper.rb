@@ -41,4 +41,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.formatter = :documentation
+
+  config.include Warden::Test::Helpers
+  config.before(:suite) { Warden.test_mode! }
 end
