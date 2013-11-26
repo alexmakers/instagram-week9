@@ -42,6 +42,7 @@ RSpec.configure do |config|
   config.order = "random"
   config.formatter = :documentation
 
+  config.include FactoryGirl::Syntax::Methods
   config.include Warden::Test::Helpers
   config.before(:suite) { Warden.test_mode! }
 end

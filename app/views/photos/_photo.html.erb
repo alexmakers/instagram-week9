@@ -1,2 +1,5 @@
-<h3><%= photo.title %></h3>
-<%= image_tag photo.image.url(:thumb), class: 'uploaded-pic' %>
+<div class='col-md-4'>
+  <h3><%= photo.title %></h3>
+  <%= image_tag photo.image.url(:thumb), class: 'uploaded-pic' %>
+  <caption>Uploaded by <%= photo.user.email if photo.user %></caption>
+</div>

@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  
+  before_action :authenticate_user!, except: :index
 
   def index
     @photos = Photo.all
@@ -9,14 +11,18 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(params[:photo].permit(:title, :image))
+    @photo = current_user.photos.build(params[:photo].permit(:title, :image))
 
-    flash[:notice] = 'Photo added'
-    redirect_to photos_path
+    if @photo.save
+      flash[:notice] = 'Photo added'
+      redirect_to photos_path
+    else
+      render 'new'
+    end
   end
 
   def edit
-    @photo = Photo.find params[:id]
+    @photo = current_user.photos.find params[:id]
   end
 
   def update
