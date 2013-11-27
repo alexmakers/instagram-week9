@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-def upload_new_photo
+def upload_new_photo(submit = true)
   visit new_photo_path
   fill_in 'Title', with: 'My cool pic'
   attach_file 'Image', Rails.root.join('spec/images/old-man1.jpg')
-  click_button 'Create Photo'
+  click_button 'Create Photo' if submit
 end
 
 describe 'uploading photos' do
@@ -33,6 +33,14 @@ describe 'uploading photos' do
       upload_new_photo
       
       expect(page).to have_content 'alex@example.com'
+    end
+
+    it 'can have tags added' do
+      upload_new_photo(false)
+      fill_in 'Tags', with: '#YOLO #LOL'
+      click_button 'Create Photo' 
+
+      expect(page).to have_content '#YOLO, #LOL'
     end
   end
 
