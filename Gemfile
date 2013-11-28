@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 1.2'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem "devise"
+gem 'websocket-rails'
+gem 'thin'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

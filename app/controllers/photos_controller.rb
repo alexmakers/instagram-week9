@@ -15,6 +15,8 @@ class PhotosController < ApplicationController
 
     if @photo.save
       flash[:notice] = 'Photo added'
+      WebsocketRails[:photos].trigger 'new',
+                   { title: @photo.title, image_url: @photo.image.url(:medium) }
       redirect_to photos_path
     else
       render 'new'
