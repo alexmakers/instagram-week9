@@ -32,6 +32,7 @@ gem 'aws-sdk'
 gem "devise"
 gem 'websocket-rails'
 gem 'thin'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

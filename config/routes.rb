@@ -2,6 +2,8 @@ InstagramClone::Application.routes.draw do
   devise_for :users
   resources :photos
   resources :tags
+  resources :charges
+
   root 'photos#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
